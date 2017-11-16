@@ -2,7 +2,7 @@ const Alexa = require('alexa-sdk');
 var request = require('request');
 
 const API_PREFIX = 'http://v0.postcodeapi.com.au/suburbs/';
-const API_SUFFIX = '.json'; // admin: wordlist
+const API_SUFFIX = '.json';
 
 
 const APP_ID = undefined;
@@ -38,12 +38,14 @@ const handlers = {
             postcode_slot = self.event.request.intent.slots.postcode.value;
             num = parseInt(postcode_slot);
 
+            // asked for 'hamburgers' or 'pink elephants'
             if(isNaN(parseFloat(num)))
             {
                 return self.emit(':tell', "I didn't understand that postcode. Goodbye.");
             }
 
         } catch (e) {
+              // slot didn't resolve at all but somehow we got here anyway
               console.log(e instanceof TypeError);
               console.log(e.message);
               return self.emit(':tell', "I didn't understand what post code you asked for. Goodbye.");
@@ -56,6 +58,7 @@ const handlers = {
         {
             request(postcode_url, function (error, response, body) {
                 if (error) {
+                    // This shouldn't happen unless the API is down, but nevertheless.
                     console.log(error);
                     speech = "Choose which word list by saying its number. ";
                     return self.emit(':tell', "The post code " +
@@ -67,6 +70,7 @@ const handlers = {
                 console.log(body.length);
                 body = JSON.parse(body);
 
+                // postcode was invalid
                 if(body.length < 1)
                 {
                     return self.emit(':tell', "The post code " + num + ' is not a valid one.');
@@ -86,6 +90,7 @@ const handlers = {
 
             });
         } catch (e) {
+              // lazy crash-preventing catch-all
               console.log(e instanceof TypeError);
               console.log(e.message);
               return self.emit(':tell', "I didn't understand what post code you asked for. Goodbye.");
@@ -107,10 +112,4 @@ const handlers = {
         this.response.speak(STOP_MESSAGE);
         this.emit(':responseReady');
     },
-};
-
-var parsePostCodeResponse = function(body) {
-
-    console.log(body);
-    return body;
 };
