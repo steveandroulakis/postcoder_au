@@ -70,7 +70,7 @@ const handlers = {
                 console.log(body.length);
                 body = JSON.parse(body);
 
-                // postcode was invalid
+                // postcode was valid number but invalid eg 9999
                 if(body.length < 1)
                 {
                     return self.emit(':tell', "The post code " + num + ' is not a valid one.');
