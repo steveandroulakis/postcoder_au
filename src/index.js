@@ -23,7 +23,8 @@ const API_SUFFIX = '.json'; // admin: wordlist
 const APP_ID = undefined;
 
 const SKILL_NAME = 'Postcoder Australia';
-const HELP_MESSAGE = "Invoke me by saying 'ask postcode australia for 2204'. Bye bye";
+const HELP_MESSAGE = "Invoke me by saying, for example," + 
+            " 'ask postcode australia for 3000'.";
 const HELP_REPROMPT = HELP_MESSAGE;
 const STOP_MESSAGE = 'Goodbye!';
 
@@ -38,7 +39,7 @@ exports.handler = function(event, context, callback) {
 
 const handlers = {
     'LaunchRequest': function () {
-        return this.emit(':tell', "Invoke me by saying 'ask postcode australia for 2204'. Bye bye.");
+        return this.emit(':tell', HELP_MESSAGE);
     },
     'GetPostcode': function () {
 
