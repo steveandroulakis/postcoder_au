@@ -38,7 +38,7 @@ exports.handler = function(event, context, callback) {
 
 const handlers = {
     'LaunchRequest': function () {
-        return self.emit(':tell', "Invoke me by saying 'ask postcode australia for 2204'. Bye bye.");
+        return this.emit(':tell', "Invoke me by saying 'ask postcode australia for 2204'. Bye bye.");
     },
     'GetPostcode': function () {
 
