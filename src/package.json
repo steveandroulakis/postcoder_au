@@ -1,0 +1,25 @@
+{
+  "name": "PostcoderAU",
+  "version": "1.0.0",
+  "description": "PostcoderAU Test Alexa Skill",
+  "main": "index.js",
+  "scripts": {
+    "invoke": "aws lambda invoke --function-name 'PostcoderAU' --payload fileb://../tests/events/alexa-start-session.json ../tests/out.txt && cat ../tests/out.txt",
+    "test": "node ../tests/test.js",
+    "deploy": "npm run permissions && npm run zip && npm run upload",
+    "permissions": "chmod -R 0777 .",
+    "upload": "aws lambda update-function-code --function-name 'PostcoderAU' --zip-file fileb://../index.zip",
+    "zip": "zip -r ../index.zip . -x 'package.json' -x '*.git*' "
+  },
+  "author": "Steve Androulakis",
+  "license": "ISC",
+  "dependencies": {
+    "alexa-sdk": "^1.0.14",
+    "request": "^2.83.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "keywords": []
+}

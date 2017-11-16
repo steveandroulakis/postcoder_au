@@ -1,0 +1,19 @@
+{
+  "intents": [
+    {
+      "intent": "GetPostcode",
+      "slots": [
+        {
+          "name": "postcode",
+          "type": "AMAZON.FOUR_DIGIT_NUMBER"
+        }
+      ]
+    },
+    {
+      "intent": "AMAZON.StopIntent"
+    },
+    {
+      "intent": "AMAZON.CancelIntent"
+    }
+  ]
+}

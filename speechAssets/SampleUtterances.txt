@@ -1,0 +1,8 @@
+GetPostcode {postcode}
+GetPostcode get me {postcode}
+GetPostcode get me postcode {postcode}
+GetPostcode get me {postcode} postcode
+GetPostcode get me postcode {postcode}
+GetPostcode for {postcode}
+GetPostcode postcode {postcode}
+GetPostcode what is {postcode}
