@@ -49,8 +49,14 @@ const handlers = {
         var postcode_slot = '';
         try
         {
-              postcode_slot = self.event.request.intent.slots.postcode.value;
-              num = parseInt(postcode_slot);
+            postcode_slot = self.event.request.intent.slots.postcode.value;
+            num = parseInt(postcode_slot);
+
+            if(isNaN(parseFloat(num)))
+            {
+                return self.emit(':tell', "I didn't understand that postcode. Goodbye.");
+            }
+
         } catch (e) {
               console.log(e instanceof TypeError);
               console.log(e.message);
@@ -74,6 +80,12 @@ const handlers = {
                 console.log(body);
                 console.log(body.length);
                 body = JSON.parse(body);
+
+                if(body.length < 1)
+                {
+                    return self.emit(':tell', "The post code " + num + ' is not a valid one.');
+                }
+
 
                 var postcode_names = '';
                 for(i = 0; i < body.length; i++)

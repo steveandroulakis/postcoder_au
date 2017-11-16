@@ -6,3 +6,7 @@ GetPostcode get me postcode {postcode}
 GetPostcode for {postcode}
 GetPostcode postcode {postcode}
 GetPostcode what is {postcode}
+GetPostcode what postcode is {postcode}
+GetPostcode whats the postcode for {postcode}
+GetPostcode whats the postcode {postcode}
+GetPostcode what postcode is {postcode}
