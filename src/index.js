@@ -23,8 +23,8 @@ const API_SUFFIX = '.json'; // admin: wordlist
 const APP_ID = undefined;
 
 const SKILL_NAME = 'Postcoder Australia';
-const HELP_MESSAGE = 'Say a four digit Australian postcode to hear information on it.';
-const HELP_REPROMPT = 'What can I help you with?';
+const HELP_MESSAGE = "Invoke me by saying 'ask postcode australia for 2204'. Bye bye";
+const HELP_REPROMPT = HELP_MESSAGE;
 const STOP_MESSAGE = 'Goodbye!';
 
 
